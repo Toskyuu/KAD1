@@ -1,14 +1,28 @@
+import csv
 
-f = open(r"C:\Users\rober\OneDrive\Pulpit\data.csv")
-lines = f.readlines()
-setosa = 0
-versicolor = 0
-virginica = 0
-for i in range(0, len(lines)):
-    if(lines[i][-2] == '0') : setosa = setosa+1
-    if(lines[i][-2] == '1') : versicolor = versicolor+1
-    if (lines[i][-2] == '2'): virginica = virginica+1
 
-all = setosa+versicolor+virginica
-print("Setosa: ", setosa, "(", round(setosa/all*100,1), "%)     Versicolor:: ", versicolor, "(", round(versicolor/all*100,2), "%)   Virginica: ", virginica, "(", round(virginica/all*100,2), "%)" )
+def min(kwiatki, rodzaj_wielkosci):
+    min = float(kwiatki[0][rodzaj_wielkosci])
+    for x in kwiatki:
+        if (float(x[rodzaj_wielkosci]) < min):
+            min = float(x[rodzaj_wielkosci])
+    return '%.2f' % min
+
+
+def max(kwiatki, rodzaj_wielkosci):
+    max = float(kwiatki[0][rodzaj_wielkosci])
+    for x in kwiatki:
+        if (float(x[rodzaj_wielkosci]) > max):
+            max = float(x[rodzaj_wielkosci])
+    return '%.2f' % max
+
+
+f = open(r"data.csv")
+csv = csv.reader(f)
+kwiatki = []
+for row in csv:
+    kwiatki.append(row)
+
+print(min(kwiatki, 0))
+print(max(kwiatki,0))
 f.close()
