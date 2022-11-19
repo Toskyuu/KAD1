@@ -125,8 +125,7 @@ def drawHistogramFor3Species(table, column, title, xlabel, names_species):
 
 def drawBoxPlotFor3Species(table, column, names_species, ylabel):
     table_for_all_categories = SortTableForTables(table, column)
-    fig, ax = plt.subplots()
-    bp = ax.boxplot(table_for_all_categories)
+    plt.boxplot(table_for_all_categories)
     plt.xlabel("Gatunek")
     plt.ylabel(ylabel)
     plt.xticks([1, 2, 3], names_species)
